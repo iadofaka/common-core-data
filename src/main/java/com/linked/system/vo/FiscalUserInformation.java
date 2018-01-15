@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -22,12 +23,15 @@ public class FiscalUserInformation implements Serializable{
 	private static final long serialVersionUID = -8241438121233079784L;
 
 	@Id
-	@GeneratedValue
-	@Column(name = "ID_FISCAL_INF", unique= true)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "FISCAL_INF_ID", unique= true)
 	private Long fiscalInfId;
 	
 	@Column(name = "ENTITY_NAME", unique= true)
 	private String entityName;
+	
+	@Column(name = "RFC", unique= true)
+	private String rfc;
 	
 	@Column(name = "ADDRESS", unique= true)
 	private String addres;
@@ -69,11 +73,12 @@ public class FiscalUserInformation implements Serializable{
 		
 	}
 
-	public FiscalUserInformation(String entityName, String addres, String doorNumber, String intNumber,
+	public FiscalUserInformation(String entityName, String rfc, String addres, String doorNumber, String intNumber,
 			String postalCode, String township, String state, String country, String telephoneNumber,
 			String emailAddress, boolean isActive, Timestamp dateRegistry, Timestamp dateRegistryUpdate) {
 		super();
 		this.entityName = entityName;
+		this.rfc = rfc;
 		this.addres = addres;
 		this.doorNumber = doorNumber;
 		this.intNumber = intNumber;
@@ -102,6 +107,14 @@ public class FiscalUserInformation implements Serializable{
 
 	public void setEntityName(String entityName) {
 		this.entityName = entityName;
+	}
+
+	public String getRfc() {
+		return rfc;
+	}
+
+	public void setRfc(String rfc) {
+		this.rfc = rfc;
 	}
 
 	public String getAddres() {
@@ -199,4 +212,5 @@ public class FiscalUserInformation implements Serializable{
 	public void setDateRegistryUpdate(Timestamp dateRegistryUpdate) {
 		this.dateRegistryUpdate = dateRegistryUpdate;
 	}
+	
 }

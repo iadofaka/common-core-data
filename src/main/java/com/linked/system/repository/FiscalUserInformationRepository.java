@@ -1,4 +1,4 @@
-package com.linked.system.Repository;
+package com.linked.system.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

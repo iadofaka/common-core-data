@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,14 +15,14 @@ import org.hibernate.envers.Audited;
 @Entity
 @Audited
 @Table(name = "LKS_C_ADM_POSITIONS")
-public class PositionsCatalog implements Serializable{
+public class PositionCatalog implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5498613062841631879L;
 	@Column(name = "POSITION_ID", unique = true)
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
 	@Column(name ="POSITION_NAME", nullable=false)
@@ -35,11 +36,11 @@ public class PositionsCatalog implements Serializable{
 	@Column(name= "IS_ACTIVE")
 	private boolean isActive;
 
-	protected PositionsCatalog() {
+	protected PositionCatalog() {
 		
 	}
 
-	public PositionsCatalog(String positionName, String grade, Timestamp dateRegistry,
+	public PositionCatalog(String positionName, String grade, Timestamp dateRegistry,
 			Timestamp dateRegistryUpdate, boolean isActive) {
 		super();
 		this.positionName = positionName;

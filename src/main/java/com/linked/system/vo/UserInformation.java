@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,13 +22,13 @@ public class UserInformation implements Serializable{
 	 */
 	private static final long serialVersionUID = -3294610342221098751L;
 	@Id
-	@GeneratedValue
-	@Column(name = "ID_USER", unique= true)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "USER_ID", unique= true)
 	private Long userId;
 	@Column(name = "FISCAL_INFORMATION_ID", nullable=false)
-	private FiscalUserInformation UserInformation;//We get the id in fiscal information table
+	private FiscalUserInformation fiscalUserInformation;//We get the id in fiscal information table
 	@Column(name = "POSITION_ID", nullable=false)
-	PositionsCatalog positionsCatalog;//we get the id position in Catalog Positions
+	PositionCatalog positionsCatalog;//we get the id position in Catalog Positions
 	@Column(name="ALIAS", nullable=false)
 	private String alias;
 	@Column(name = "NAME", nullable=false)
@@ -64,12 +65,12 @@ public class UserInformation implements Serializable{
 	}
 
 
-	public UserInformation(FiscalUserInformation userInformation, PositionsCatalog positionsCatalog, String alias,
+	public UserInformation(FiscalUserInformation fiscalUserInformation, PositionCatalog positionsCatalog, String alias,
 			String name, String secondName, String lastName, String secondLastName, String fullName, String address,
 			String doorNumber, String cellPhone, String email, String imagePath, String password, boolean isActive,
 			Timestamp dateRegistry, Timestamp dateRegistryUpdate) {
 		super();
-		UserInformation = userInformation;
+		this.fiscalUserInformation = fiscalUserInformation;
 		this.positionsCatalog = positionsCatalog;
 		this.alias = alias;
 		this.name = name;
@@ -99,22 +100,22 @@ public class UserInformation implements Serializable{
 	}
 
 
-	public FiscalUserInformation getUserInformation() {
-		return UserInformation;
+	public FiscalUserInformation getFiscalUserInformation() {
+		return fiscalUserInformation;
 	}
 
 
-	public void setUserInformation(FiscalUserInformation userInformation) {
-		UserInformation = userInformation;
+	public void setFiscalUserInformation(FiscalUserInformation fiscalUserInformation) {
+		this.fiscalUserInformation = fiscalUserInformation;
 	}
 
 
-	public PositionsCatalog getPositionsCatalog() {
+	public PositionCatalog getPositionsCatalog() {
 		return positionsCatalog;
 	}
 
 
-	public void setPositionsCatalog(PositionsCatalog positionsCatalog) {
+	public void setPositionsCatalog(PositionCatalog positionsCatalog) {
 		this.positionsCatalog = positionsCatalog;
 	}
 
