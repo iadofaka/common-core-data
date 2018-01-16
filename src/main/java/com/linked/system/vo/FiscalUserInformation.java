@@ -12,6 +12,15 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * 
+ * @author Ing Fabian Carvajal Acolt 
+ * @version 1.0.0
+ * @since Enero 2018
+ *
+ */
 @Entity
 @Table(name = "LKS_M_ADM_FISCAL_INFORMATION")
 @Audited
@@ -26,47 +35,35 @@ public class FiscalUserInformation implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "FISCAL_INF_ID", unique= true)
 	private Long fiscalInfId;
-	
 	@Column(name = "ENTITY_NAME", unique= true)
 	private String entityName;
-	
 	@Column(name = "RFC", unique= true)
 	private String rfc;
-	
 	@Column(name = "ADDRESS", unique= true)
 	private String addres;
-
 	@Column(name = "DOOR_NUMBER", unique= true)
 	private String doorNumber;
-	
 	@Column(name = "INT_NUMBER", unique= true)
 	private String intNumber;
-	
 	@Column(name = "POSTAL_CODE", unique = true)
 	private String postalCode;
-	
 	@Column(name = "TOWNSHIP", unique = true)
 	private String township;
-	
 	@Column(name = "STATE", unique = true)
 	private String state;
-	
 	@Column(name = "COUNTRY", unique = true)
 	private String country;
-	
 	@Column(name = "TELEPHONE_NUMBER", unique = true)
 	private String telephoneNumber;
-	
 	@Column(name = "EMAIL_ADDRESS", unique = true)
 	private String emailAddress;
-	
 	@Column(name = "IS_ACTIVE", unique = true)
 	private boolean isActive;
-	
 	@Column(name = "DATE_REGISTRY", nullable=false)
+	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistry;
-	
 	@Column(name = "DATE_REGISTRY_UPDATE", nullable=false)
+	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistryUpdate;
 	
 	protected FiscalUserInformation() {

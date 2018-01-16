@@ -1,9 +1,18 @@
 package com.linked.system.response;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.linked.system.vo.PositionCatalog;
-
+/**
+ * 
+ * @author Ing Fabian Carvajal Acolt 
+ * @version 1.0.0
+ * @since Enero 2018
+ *
+ */
 public class PositionCatalogResponse implements Serializable{
 	
 	/**
@@ -13,17 +22,47 @@ public class PositionCatalogResponse implements Serializable{
 	private String responseCode;
 	private String message;
 	private boolean isSuccessFull;
-	private PositionCatalog positionCatalog;
+	@JsonInclude(Include.NON_NULL)
+	private PositionCatalog position;
+	@JsonInclude(Include.NON_NULL)
+	private List<PositionCatalog> positions;
+	@JsonInclude(Include.NON_NULL)
+	private Iterable<PositionCatalog> iterablePositions; 
 	
 	public PositionCatalogResponse() {}
 	
 	public PositionCatalogResponse(String responseCode, String message, boolean isSuccessFull,
-			PositionCatalog positionCatalog) {
+			PositionCatalog position) {
 		super();
 		this.responseCode = responseCode;
 		this.message = message;
 		this.isSuccessFull = isSuccessFull;
-		this.positionCatalog = positionCatalog;
+		this.position = position;
+	}
+	
+	public PositionCatalogResponse(String responseCode, String message, boolean isSuccessFull) {
+		super();
+		this.responseCode = responseCode;
+		this.message = message;
+		this.isSuccessFull = isSuccessFull;
+	}
+	
+	public PositionCatalogResponse(String responseCode, String message, boolean isSuccessFull,
+			List<PositionCatalog> positions) {
+		super();
+		this.responseCode = responseCode;
+		this.message = message;
+		this.isSuccessFull = isSuccessFull;
+		this.positions = positions;
+	}
+
+	public PositionCatalogResponse(String responseCode, String message, boolean isSuccessFull,
+			Iterable<PositionCatalog> iterablePositions) {
+		super();
+		this.responseCode = responseCode;
+		this.message = message;
+		this.isSuccessFull = isSuccessFull;
+		this.iterablePositions = iterablePositions;
 	}
 
 	public String getResponseCode() {
@@ -50,11 +89,27 @@ public class PositionCatalogResponse implements Serializable{
 		this.isSuccessFull = isSuccessFull;
 	}
 
-	public PositionCatalog getPositionCatalog() {
-		return positionCatalog;
+	public PositionCatalog getPosition() {
+		return position;
 	}
 
-	public void setPositionCatalog(PositionCatalog positionCatalog) {
-		this.positionCatalog = positionCatalog;
+	public void setPosition(PositionCatalog position) {
+		this.position = position;
+	}
+
+	public List<PositionCatalog> getPositions() {
+		return positions;
+	}
+
+	public void setPositions(List<PositionCatalog> positions) {
+		this.positions = positions;
+	}
+
+	public Iterable<PositionCatalog> getIterablePositions() {
+		return iterablePositions;
+	}
+
+	public void setIterablePositions(Iterable<PositionCatalog> iterablePositions) {
+		this.iterablePositions = iterablePositions;
 	}
 }

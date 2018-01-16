@@ -12,6 +12,15 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * 
+ * @author Ing Fabian Carvajal Acolt 
+ * @version 1.0.0
+ * @since Enero 2018
+ *
+ */
 @Entity
 @Table(name = "LKS_M_ADM_USER")
 @Audited
@@ -56,8 +65,10 @@ public class UserInformation implements Serializable{
 	@Column(name = "IS_ACTIVE", nullable=false)
 	private boolean isActive;
 	@Column(name = "DATE_REGISTRY", nullable=false)
+	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistry;
 	@Column(name = "DATE_REGISTRY_UPDATE", nullable=false)
+	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistryUpdate;
 	
 

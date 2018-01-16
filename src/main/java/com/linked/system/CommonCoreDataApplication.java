@@ -7,9 +7,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
+/**
+ * 
+ * @author Ing Fabian Carvajal Acolt 
+ * @version 1.0.0
+ * @since Enero 2018
+ *
+ */
 @SpringBootApplication
 public class CommonCoreDataApplication extends SpringBootServletInitializer{
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CommonCoreDataApplication.class, args);
 //		SpringApplicationBuilder springApplicationBuilder= 
