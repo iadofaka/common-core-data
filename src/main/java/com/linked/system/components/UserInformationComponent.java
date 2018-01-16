@@ -14,7 +14,7 @@ import com.linked.system.response.UserInformationResponse;
 import com.linked.system.services.UserInformationService;
 import com.linked.system.vo.UserInformation;
 
-@Path("/service")
+@Path("/user")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Component
@@ -25,7 +25,7 @@ public class UserInformationComponent {
 	
 	
 	@POST
-	@Path("/create/user")
+	@Path("/create")
 	public UserInformationResponse createUser(UserInformation userInformation){
 		UserInformationResponse informationResponse = new  UserInformationResponse();
 		userInformationService.createUserInformation(userInformation);

@@ -5,6 +5,7 @@ import com.linked.system.services.PositionCatalogService;
 import com.linked.system.vo.PositionCatalog;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -13,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Path("/service")
+@Path("/position")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Component
@@ -23,10 +24,11 @@ public class PositionCatalogComponent {
 	PositionCatalogService positionCatalogService;
 	
 	@POST
-	@Path("/create/position")
+	@Path("/create")
 	public PositionCatalogResponse createPosition(PositionCatalog positionCatalog){
 		PositionCatalogResponse positionCatalogResponse = new PositionCatalogResponse();
 		positionCatalogService.createPosition(positionCatalog);
+		System.out.println(positionCatalog.getPositionName());
 		 positionCatalog = positionCatalogService.findByName(positionCatalog.getPositionName());
 		
 		 positionCatalogResponse = new PositionCatalogResponse("0", "Is OK", true, positionCatalog);
@@ -34,5 +36,10 @@ public class PositionCatalogComponent {
 		return positionCatalogResponse;
 	}
 	
+	@GET
+	public String sayHello(){
+		System.out.println("Entró al sistema");
+		return "{\"username\":\"raidentrance\"}";
+	}
 
 }
