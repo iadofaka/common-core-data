@@ -3,11 +3,13 @@ package com.linked.system.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.linked.system.repository.PositionCatalogRepository;
 import com.linked.system.services.PositionCatalogService;
 import com.linked.system.vo.PositionCatalog;
 
+@Service
 public class PositionCatalogServiceImpl implements PositionCatalogService{
 	
 	@Autowired

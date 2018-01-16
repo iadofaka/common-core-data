@@ -1,9 +1,11 @@
 package com.linked.system.components;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,21 +14,22 @@ import com.linked.system.response.UserInformationResponse;
 import com.linked.system.services.UserInformationService;
 import com.linked.system.vo.UserInformation;
 
+@Path("/service")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @Component
-@Path("service/")
 public class UserInformationComponent {
 	
 	@Autowired
-	UserInformationService _userInformationService; 
+	UserInformationService userInformationService; 
 	
 	
 	@POST
 	@Path("/create/user")
-	@Produces("application/json")
 	public UserInformationResponse createUser(UserInformation userInformation){
 		UserInformationResponse informationResponse = new  UserInformationResponse();
-		_userInformationService.createUserInformation(userInformation);
-		userInformation = (UserInformation) _userInformationService.findByAlias(userInformation.getAlias());
+		userInformationService.createUserInformation(userInformation);
+		userInformation = (UserInformation) userInformationService.findByAlias(userInformation.getAlias());
 		informationResponse = new UserInformationResponse("0", "Is ok", true, userInformation);
 		
 		return informationResponse;
@@ -34,8 +37,8 @@ public class UserInformationComponent {
 	}
 	
 	@GET
-	@Path("/getInformation")
 	public String sayHello(){
-		return "Hello";
+		System.out.println("Entró al sistema");
+		return "{\"username\":\"raidentrance\"}";
 	}
 }
