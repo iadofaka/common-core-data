@@ -161,6 +161,11 @@ public class PositionCatalogComponent {
 						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
 						,true
 						,findPositionResult);
+			}else{
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.POSITION_NOT_EXIST.getCode()
+						,ReturnCodes.POSITION_NOT_EXIST.getMessage()
+						,true);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -183,10 +188,27 @@ public class PositionCatalogComponent {
 						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
 						,true
 						,findPositionResult);
+			}else{
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.POSITION_NOT_EXIST.getCode()
+						,ReturnCodes.POSITION_NOT_EXIST.getMessage()
+						,true);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return positionCatalogResponse;
+	}
+	
+	@PUT
+	@Path("/update")
+	public PositionCatalogResponse updatePosition(PositionCatalog positionCatalog){
+		PositionCatalogResponse positionCatalogResponse = new PositionCatalogResponse();
+		try{
+			
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
 		return positionCatalogResponse;
 	}
