@@ -45,13 +45,23 @@ public class PositionCatalogComponent {
 		PositionCatalogResponse positionCatalogResponse = new PositionCatalogResponse();
 		logger.info("New name position: " + positionCatalog.getPositionName());
 		try {
-			PositionCatalog positionCatalogResult = positionCatalogService.findByPositionName(positionCatalog.getPositionName());
+			PositionCatalog positionCatalogResult = positionCatalogService
+					.findByPositionName(positionCatalog.getPositionName());
 			if(positionCatalogResult == null){
 				positionCatalogService.createPosition(positionCatalog);
-				positionCatalogResult = positionCatalogService.findByPositionName(positionCatalog.getPositionName());
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, positionCatalogResult);
+				positionCatalogResult = positionCatalogService
+						.findByPositionName(positionCatalog.getPositionName());
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,positionCatalogResult);
 			}else{
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.POSITION_EXIST.getCode(), ReturnCodes.POSITION_EXIST.getMessage(), true, positionCatalogResult);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.POSITION_EXIST.getCode()
+						,ReturnCodes.POSITION_EXIST.getMessage()
+						,true
+						,positionCatalogResult);
 			}	
 		} catch (Exception e) {
 			positionCatalogResponse = new PositionCatalogResponse("-1", "Error: " + e.getMessage(), false);
@@ -67,9 +77,16 @@ public class PositionCatalogComponent {
 		try {
 			PositionCatalog positionCatalog = positionCatalogService.findByPositionName(positionName);
 			if(positionCatalog != null){
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, positionCatalog);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,positionCatalog);
 			}else{
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.POSITION_NOT_EXIST.getCode(), ReturnCodes.POSITION_NOT_EXIST.getMessage(), true);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.POSITION_NOT_EXIST.getCode()
+						,ReturnCodes.POSITION_NOT_EXIST.getMessage()
+						,true);
 			}
 			
 		} catch (Exception e) {
@@ -86,9 +103,16 @@ public class PositionCatalogComponent {
 		try {
 			List<PositionCatalog> positionsCatalog = positionCatalogService.findByIsActive(isActive);
 			if(positionsCatalog.size() > 0){
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, positionsCatalog);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,positionsCatalog);
 			}else{
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.THERE_ARE_NOT_RESULTS.getCode(), ReturnCodes.THERE_ARE_NOT_RESULTS.getMessage(), true);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.THERE_ARE_NOT_RESULTS.getCode()
+						,ReturnCodes.THERE_ARE_NOT_RESULTS.getMessage()
+						,true);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -105,9 +129,16 @@ public class PositionCatalogComponent {
 		try {
 			Iterable<PositionCatalog> iterable = positionCatalogService.findAll();
 			if(iterable != null){
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, iterable);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,iterable);
 			}else{
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.THERE_ARE_NOT_RESULTS.getCode(), ReturnCodes.THERE_ARE_NOT_RESULTS.getMessage(), true);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.THERE_ARE_NOT_RESULTS.getCode()
+						,ReturnCodes.THERE_ARE_NOT_RESULTS.getMessage()
+						,true);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -121,10 +152,15 @@ public class PositionCatalogComponent {
 	public PositionCatalogResponse lockPosition(PositionCatalog positionCatalog){
 		PositionCatalogResponse positionCatalogResponse = new PositionCatalogResponse();
 		try {
-			PositionCatalog findPositionResult = positionCatalogService.findByPositionName(positionCatalog.getPositionName());
+			PositionCatalog findPositionResult = positionCatalogService
+					.findByPositionName(positionCatalog.getPositionName());
 			if(findPositionResult != null){
 				positionCatalogService.lockPosition(findPositionResult);
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, findPositionResult);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,findPositionResult);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -138,17 +174,20 @@ public class PositionCatalogComponent {
 	public PositionCatalogResponse unLockPosition(PositionCatalog positionCatalog){
 		PositionCatalogResponse positionCatalogResponse = new PositionCatalogResponse();
 		try {
-			PositionCatalog findPositionResult = positionCatalogService.findByPositionName(positionCatalog.getPositionName());
+			PositionCatalog findPositionResult = positionCatalogService
+					.findByPositionName(positionCatalog.getPositionName());
 			if(findPositionResult != null){
 				positionCatalogService.unLockPosition(findPositionResult);
-				positionCatalogResponse = new PositionCatalogResponse(ReturnCodes.SUCCESFULL_RESPONSE.getCode(), ReturnCodes.SUCCESFULL_RESPONSE.getMessage(), true, findPositionResult);
+				positionCatalogResponse = new PositionCatalogResponse(
+						ReturnCodes.SUCCESFULL_RESPONSE.getCode()
+						,ReturnCodes.SUCCESFULL_RESPONSE.getMessage()
+						,true
+						,findPositionResult);
 			}
-			
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return positionCatalogResponse;
 	}
-} 
+}
