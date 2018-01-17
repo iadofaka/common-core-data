@@ -42,10 +42,4 @@ public class UserInformationComponent {
 		return informationResponse;
 		
 	}
-	
-	@GET
-	public String sayHello(){
-		System.out.println("Entró al sistema");
-		return "{\"username\":\"raidentrance\"}";
-	}
 }
