@@ -60,10 +60,12 @@ public class FiscalUserInformation implements Serializable{
 	@Column(name = "IS_ACTIVE", unique = true)
 	private boolean isActive;
 	@Column(name = "DATE_REGISTRY", nullable=false)
-	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(timezone = "America/Mexico_City", 
+	shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistry;
 	@Column(name = "DATE_REGISTRY_UPDATE", nullable=false)
-	@JsonFormat(timezone = "America/Mexico_City", shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(timezone = "America/Mexico_City", 
+	shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp dateRegistryUpdate;
 	
 	protected FiscalUserInformation() {

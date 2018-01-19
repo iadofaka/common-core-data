@@ -1,49 +1,60 @@
+/**
+ * 
+ */
 package com.linked.system.services.impl;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.linked.system.repository.PositionCatalogRepository;
 import com.linked.system.services.PositionCatalogService;
 import com.linked.system.vo.PositionCatalog;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- * 
- * @author Ing Fabian Carvajal Acolt 
- * @version 1.0.0
- * @since Enero 2018
+ * @author Ing. Fabian Carvajal Acolt
  *
  */
-@Service
-public class PositionCatalogServiceImpl implements PositionCatalogService{
-
+public class PositionCatalogServiceImpl implements PositionCatalogService {
+	
 	@Autowired
 	PositionCatalogRepository  positionCatalogRepository;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#findAll()
+	 */
 	@Override
 	public Iterable<PositionCatalog> findAll() {
 		logger.info("Find all position");
 		return positionCatalogRepository.findAll();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#findByPositionName(java.lang.String)
+	 */
 	@Override
 	public PositionCatalog findByPositionName(String name) {
 		logger.info("Find position name: " + name);
 		return positionCatalogRepository.findByPositionName(name);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#findByIsActive(java.lang.Boolean)
+	 */
 	@Override
 	public List<PositionCatalog> findByIsActive(Boolean isActive) {
 		logger.info("Find all position when is: " + isActive);
 		return positionCatalogRepository.findByIsActive(isActive);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#createPosition(com.linked.system.vo.PositionCatalog)
+	 */
 	@Override
 	public void createPosition(PositionCatalog positionCatalog) {
 		java.util.Date date = new java.util.Date();
@@ -56,6 +67,9 @@ public class PositionCatalogServiceImpl implements PositionCatalogService{
 		logger.info("The new position name " + positionCatalog.getPositionName() +" was saved" );
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#updatePosition(com.linked.system.vo.PositionCatalog)
+	 */
 	@Override
 	public void updatePosition(PositionCatalog positionCatalog) {
 		java.util.Date date = new java.util.Date();
@@ -67,6 +81,9 @@ public class PositionCatalogServiceImpl implements PositionCatalogService{
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#lockPosition(com.linked.system.vo.PositionCatalog)
+	 */
 	@Override
 	public void lockPosition(PositionCatalog positionCatalog) {
 		java.util.Date date = new java.util.Date();
@@ -79,6 +96,9 @@ public class PositionCatalogServiceImpl implements PositionCatalogService{
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.linked.system.services.PositionCatalogService#unLockPosition(com.linked.system.vo.PositionCatalog)
+	 */
 	@Override
 	public void unLockPosition(PositionCatalog positionCatalog) {
 		java.util.Date date = new java.util.Date();

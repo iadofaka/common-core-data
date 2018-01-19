@@ -1,5 +1,7 @@
 package com.linked.system.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.linked.system.vo.FiscalUserInformation;
@@ -12,5 +14,9 @@ import com.linked.system.vo.FiscalUserInformation;
  *
  */
 public interface FiscalUserInformationRepository extends CrudRepository<FiscalUserInformation, Long> {
+	
+	FiscalUserInformation findByEntityName(String alias);
+	FiscalUserInformation findByRfc(String rfc);
+	List<FiscalUserInformation> findByIsActive(Boolean isActive);
 	
 }

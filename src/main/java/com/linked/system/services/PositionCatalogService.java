@@ -13,10 +13,10 @@ import com.linked.system.vo.PositionCatalog;
  */
 public interface PositionCatalogService {
 	
-	Iterable<PositionCatalog> findAll() throws Exception;//ok
-	PositionCatalog findByPositionName(String name) throws Exception;//ok
-	List<PositionCatalog> findByIsActive(Boolean isActive) throws Exception;//ok
-	void createPosition(PositionCatalog positionsCatalog) throws Exception;//ok
+	Iterable<PositionCatalog> findAll() throws Exception;
+	PositionCatalog findByPositionName(String name) throws Exception;
+	List<PositionCatalog> findByIsActive(Boolean isActive) throws Exception;
+	void createPosition(PositionCatalog positionsCatalog) throws Exception;
 	void updatePosition(PositionCatalog positionsCatalog) throws Exception;
 	void lockPosition(PositionCatalog positionsCatalog) throws Exception;
 	void unLockPosition(PositionCatalog positionsCatalog) throws Exception;
